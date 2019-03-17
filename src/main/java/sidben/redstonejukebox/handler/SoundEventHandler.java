@@ -1,11 +1,12 @@
 package sidben.redstonejukebox.handler;
 
-import net.minecraft.client.audio.SoundCategory;
-import net.minecraftforge.client.event.sound.PlaySoundEvent17;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.SoundEvent;
+import net.minecraftforge.client.event.sound.PlaySoundEvent;
+import net.minecraftforge.fml.common.eventhandler.Event.Result;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import sidben.redstonejukebox.ModRedstoneJukebox;
 import sidben.redstonejukebox.helper.LogHelper;
-import cpw.mods.fml.common.eventhandler.Event.Result;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 
 
@@ -13,16 +14,16 @@ public class SoundEventHandler
 {
 
     @SubscribeEvent
-    public void onPlaySound(PlaySoundEvent17 event)
+    public void onPlaySound(PlaySoundEvent event)
     {
-        final String soundName = event.name;
-        final SoundCategory soundCat = event.category;
+        final String soundName = event.getName();
+//        final SoundEvent soundCat = event.category;
         final boolean isWorldRunning = (ModRedstoneJukebox.proxy.getClientWorld() != null);
 
 
         // Avoids the WARN message "Unable to play unknown soundEvent: minecraft:none"
         if (soundName.equals("none")) {
-            event.result = null;
+            event.setResult(null);
         }
 
 
@@ -59,7 +60,7 @@ public class SoundEventHandler
                 }
 
                 if (isJukeboxPlaying || isCustomBgPlaying) {
-                    event.result = null;
+                    event.setResult(null);
                     event.setResult(Result.DENY);
                 }
             }

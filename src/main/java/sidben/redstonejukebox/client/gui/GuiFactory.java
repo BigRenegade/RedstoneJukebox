@@ -3,8 +3,7 @@ package sidben.redstonejukebox.client.gui;
 import java.util.Set;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
-import cpw.mods.fml.client.IModGuiFactory;
-
+import net.minecraftforge.fml.client.IModGuiFactory;
 
 public class GuiFactory implements IModGuiFactory
 {
@@ -31,5 +30,17 @@ public class GuiFactory implements IModGuiFactory
     {
         return null;
     }
+
+	@Override
+	public boolean hasConfigGui() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public GuiScreen createConfigGui(GuiScreen parentScreen) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

@@ -7,6 +7,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.client.FMLClientHandler;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import sidben.redstonejukebox.ModRedstoneJukebox;
 import sidben.redstonejukebox.client.gui.GuiRecordTrading;
 import sidben.redstonejukebox.client.gui.GuiRedstoneJukebox;
@@ -17,8 +19,6 @@ import sidben.redstonejukebox.helper.MusicHelper;
 import sidben.redstonejukebox.init.MyItems;
 import sidben.redstonejukebox.reference.Reference;
 import sidben.redstonejukebox.tileentity.TileEntityRedstoneJukebox;
-import cpw.mods.fml.client.FMLClientHandler;
-import cpw.mods.fml.client.registry.RenderingRegistry;
 
 
 
@@ -49,7 +49,7 @@ public class ClientProxy extends CommonProxy
     @Override
     public World getClientWorld()
     {
-        return FMLClientHandler.instance().getClient().theWorld;
+        return FMLClientHandler.instance().getClient().world;
     }
 
 

@@ -5,6 +5,8 @@ import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.relauncher.Side;
 import sidben.redstonejukebox.ModRedstoneJukebox;
 import sidben.redstonejukebox.handler.PlayerEventHandler;
 import sidben.redstonejukebox.init.MyBlocks;
@@ -22,8 +24,6 @@ import sidben.redstonejukebox.network.RecordTradingFullListMessage;
 import sidben.redstonejukebox.network.RecordTradingGUIUpdatedMessage;
 import sidben.redstonejukebox.reference.Reference;
 import sidben.redstonejukebox.tileentity.TileEntityRedstoneJukebox;
-import cpw.mods.fml.common.network.NetworkRegistry;
-import cpw.mods.fml.relauncher.Side;
 
 
 /*

@@ -4,14 +4,14 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.village.MerchantRecipeList;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
+import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
+import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
+import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import sidben.redstonejukebox.ModRedstoneJukebox;
 import sidben.redstonejukebox.handler.ConfigurationHandler;
 import sidben.redstonejukebox.helper.LogHelper;
 import sidben.redstonejukebox.tileentity.TileEntityRedstoneJukebox;
-import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
-import cpw.mods.fml.common.network.simpleimpl.IMessage;
-import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
-import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 
 
 public class NetworkHelper
@@ -57,7 +57,7 @@ public class NetworkHelper
         final int targetRange = defaultJukeboxRange + extraRangeForNearbyPlayers + volumeExtender;
 
         final JukeboxPlayRecordMessage message = new JukeboxPlayRecordMessage(teJukebox, recordInfoId, slot, volumeExtender);
-        final TargetPoint target = new TargetPoint(teJukebox.getWorldObj().provider.dimensionId, teJukebox.xCoord, teJukebox.yCoord, teJukebox.zCoord, targetRange);
+        final TargetPoint target = new TargetPoint(teJukebox.getWorld().provider.dimensionId, teJukebox.xCoord, teJukebox.yCoord, teJukebox.zCoord, targetRange);
 
         // --- Debug ---
         if (ConfigurationHandler.debugNetworkJukebox) {
@@ -180,7 +180,7 @@ public class NetworkHelper
                 LogHelper.info("    " + message);
             }
 
-            final World world = ctx.getServerHandler().playerEntity.worldObj;
+            final World world = ctx.getServerHandler().playerEntity.world;
             if (world == null) {
                 LogHelper.warn("Server world not found for message [" + message + "]");
             } else {
@@ -189,6 +189,12 @@ public class NetworkHelper
 
             return null;
         }
+
+		@Override
+		public IMessage onMessage(JukeboxGUIUpdatedMessage message, MessageContext ctx) {
+			// TODO Auto-generated method stub
+			return null;
+		}
 
     }
 

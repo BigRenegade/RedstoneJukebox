@@ -9,16 +9,13 @@ import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.audio.SoundHandler;
 import net.minecraft.client.audio.SoundManager;
 import net.minecraft.client.renderer.RenderGlobal;
-import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.StatCollector;
+import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import sidben.redstonejukebox.ModRedstoneJukebox;
 import sidben.redstonejukebox.handler.ConfigurationHandler;
 import com.google.common.collect.HashBiMap;
 import com.google.common.collect.Maps;
-import cpw.mods.fml.common.ObfuscationReflectionHelper;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 
 
@@ -275,11 +272,11 @@ public class MusicHelper
             final String soundId = entry.getKey();
             final ISound soundObj = entry.getValue();
 
-            if (soundObj.getPositionedSoundLocation().getResourcePath().startsWith("music.") || soundObj.getAttenuationType() == ISound.AttenuationType.NONE
+            if (soundObj.getSoundLocation().getResourcePath().startsWith("music.") || soundObj.getAttenuationType() == ISound.AttenuationType.NONE
                     || (soundObj.getXPosF() == 0F && soundObj.getYPosF() == 0F && soundObj.getZPosF() == 0F)) {
 
                 if (ConfigurationHandler.debugMusicHelper) {
-                    LogHelper.info("    Stopping sound [" + soundId + "] - " + soundObj.getPositionedSoundLocation());
+                    LogHelper.info("    Stopping sound [" + soundId + "] - " + soundObj.getSoundLocation());
                 }
 
                 mc.getSoundHandler().stopSound(soundObj);
