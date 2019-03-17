@@ -1,0 +1,28 @@
+{
+  "perspectives": {
+    "category": "record",
+    "sounds": [
+        { "name": "redstonejukebox:perspectives",
+          "stream": true 
+        }
+    ]
+  },
+  "kissthis": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "redstonejukebox:kissthis",
+        "stream": true
+      }
+    ]
+  },
+  "kissass": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "redstonejukebox:kissass",
+        "stream": true
+      }
+    ]
+  }
+}
